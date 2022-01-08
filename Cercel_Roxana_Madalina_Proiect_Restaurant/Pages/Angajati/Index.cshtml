@@ -1,0 +1,63 @@
+﻿@page
+@model Cercel_Roxana_Madalina_Proiect_Restaurant.Pages.Angajati.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="text-center">
+    <h1 class="display-4"><span style="color:crimson;">Angajații</span> noștrii</h1>
+</div>
+<br />
+<p>
+    <a asp-page="Create">Adauga un nou angajat!</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Angajat[0].Nume)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Angajat[0].Prenume)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Angajat[0].NrTelefon)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Angajat[0].Salariu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Angajat[0].OreSupl)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Angajat)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nume)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prenume)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NrTelefon)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salariu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OreSupl)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.AngajatId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.AngajatId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.AngajatId">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

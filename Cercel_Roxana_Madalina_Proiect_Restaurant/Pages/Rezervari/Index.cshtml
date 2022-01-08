@@ -1,0 +1,53 @@
+﻿@page
+@model Cercel_Roxana_Madalina_Proiect_Restaurant.Pages.Rezervari.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="text-center">
+    <h1 class="display-4">Creează o <span style="color:crimson;">rezervare</span> la restaurantul nostru!</h1>
+</div>
+<br />
+
+<p>
+    <a asp-page="Create">Creează o rezervare aici</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Rezervare[0].Client.Nume)
+                </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rezervare[0].Client.Prenume)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rezervare[0].OraData)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Rezervare)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Client.Nume)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Client.Prenume)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OraData)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.RezervareID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.RezervareID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.RezervareID">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

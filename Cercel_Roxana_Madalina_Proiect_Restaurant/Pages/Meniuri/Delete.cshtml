@@ -1,0 +1,49 @@
+﻿@page
+@model Cercel_Roxana_Madalina_Proiect_Restaurant.Pages.Meniuri.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Ștergi <span style="color:crimson;">meniul?</span></h1>
+</div>
+<br />
+
+<h3>Ești sigur?</h3><br />
+<div>
+    <h4>Meniu</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Meniu.Denumire)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Meniu.Denumire)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Meniu.Categorie)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Meniu.Categorie)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Meniu.Gramaj)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Meniu.Gramaj)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Meniu.Pret)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Meniu.Pret)
+        </dd>
+    </dl>
+
+    <form method="post">
+        <input type="hidden" asp-for="Meniu.MeniuID" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>

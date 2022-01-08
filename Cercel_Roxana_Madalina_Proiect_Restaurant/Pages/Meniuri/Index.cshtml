@@ -1,0 +1,74 @@
+﻿@page
+@model Cercel_Roxana_Madalina_Proiect_Restaurant.Pages.Meniuri.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="text-center">
+    <h1 class="display-4"><span style="color:crimson;">Meniul</span> nostru</h1>
+</div>
+<br />
+
+<p>
+    <a asp-page="Create">Adaugă un meniu nou!</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Meniu[0].Denumire)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Meniu[0].Categorie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Meniu[0].Gramaj)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Meniu[0].Pret)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Meniu[0].MeniuProduse)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.MeniuD.Meniuri)
+        {
+            string selectedRow = "";
+            if (item.MeniuID == Model.MeniuID)
+            {
+                selectedRow = "table-success";
+            }
+            <tr class="@selectedRow">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Denumire)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Categorie)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gramaj)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pret)
+                </td>
+                <td>
+                    @{
+                        foreach (var category in item.MeniuProduse)
+                        {
+                            @category.Produs.ID @: @category.Produs.ProdusNume <br />
+                        }
+                    }
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.MeniuID">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.MeniuID">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.MeniuID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a  asp-page="/Produse/Index">Lista produselor pe care le folosim poate fi consultată aici!</a>
