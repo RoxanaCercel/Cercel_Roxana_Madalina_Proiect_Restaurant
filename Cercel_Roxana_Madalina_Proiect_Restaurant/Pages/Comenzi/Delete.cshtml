@@ -1,0 +1,36 @@
+﻿@page
+@model Cercel_Roxana_Madalina_Proiect_Restaurant.Pages.Comenzi.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+<div class="text-center">
+    <h1 class="display-4">Ștergi <span style="color:crimson;">comanda</span>?</h1>
+</div>
+<br />
+
+<h3>Ești sigur?</h3>
+<div>
+    <h4>Comanda</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Comanda.nota)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Comanda.nota)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Comanda.buc)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Comanda.buc)
+        </dd>
+    </dl>
+
+    <form method="post">
+        <input type="hidden" asp-for="Comanda.ComandaID" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>

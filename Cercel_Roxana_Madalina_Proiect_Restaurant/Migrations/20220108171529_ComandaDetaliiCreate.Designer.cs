@@ -4,14 +4,16 @@ using Cercel_Roxana_Madalina_Proiect_Restaurant.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Cercel_Roxana_Madalina_Proiect_Restaurant.Migrations
 {
     [DbContext(typeof(Cercel_Roxana_Madalina_Proiect_RestaurantContext))]
-    partial class Cercel_Roxana_Madalina_Proiect_RestaurantContextModelSnapshot : ModelSnapshot
+    [Migration("20220108171529_ComandaDetaliiCreate")]
+    partial class ComandaDetaliiCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -4,14 +4,16 @@ using Cercel_Roxana_Madalina_Proiect_Restaurant.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Cercel_Roxana_Madalina_Proiect_Restaurant.Migrations
 {
     [DbContext(typeof(Cercel_Roxana_Madalina_Proiect_RestaurantContext))]
-    partial class Cercel_Roxana_Madalina_Proiect_RestaurantContextModelSnapshot : ModelSnapshot
+    [Migration("20220108170735_ComandaCreate")]
+    partial class ComandaCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -84,18 +86,6 @@ namespace Cercel_Roxana_Madalina_Proiect_Restaurant.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AngajatID")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ClientId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ClientiID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MeniuID")
-                        .HasColumnType("int");
-
                     b.Property<int>("buc")
                         .HasColumnType("int");
 
@@ -103,12 +93,6 @@ namespace Cercel_Roxana_Madalina_Proiect_Restaurant.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ComandaID");
-
-                    b.HasIndex("AngajatID");
-
-                    b.HasIndex("ClientId");
-
-                    b.HasIndex("MeniuID");
 
                     b.ToTable("Comanda");
                 });
@@ -202,31 +186,6 @@ namespace Cercel_Roxana_Madalina_Proiect_Restaurant.Migrations
                     b.ToTable("Rezervare");
                 });
 
-            modelBuilder.Entity("Cercel_Roxana_Madalina_Proiect_Restaurant.Models.Comanda", b =>
-                {
-                    b.HasOne("Cercel_Roxana_Madalina_Proiect_Restaurant.Models.Angajat", "Angajat")
-                        .WithMany("Comenzi")
-                        .HasForeignKey("AngajatID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Cercel_Roxana_Madalina_Proiect_Restaurant.Models.Client", "Client")
-                        .WithMany("Comenzi")
-                        .HasForeignKey("ClientId");
-
-                    b.HasOne("Cercel_Roxana_Madalina_Proiect_Restaurant.Models.Meniu", "Meniu")
-                        .WithMany("Comenzi")
-                        .HasForeignKey("MeniuID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Angajat");
-
-                    b.Navigation("Client");
-
-                    b.Navigation("Meniu");
-                });
-
             modelBuilder.Entity("Cercel_Roxana_Madalina_Proiect_Restaurant.Models.MeniuProdus", b =>
                 {
                     b.HasOne("Cercel_Roxana_Madalina_Proiect_Restaurant.Models.Meniu", "Meniu")
@@ -257,22 +216,13 @@ namespace Cercel_Roxana_Madalina_Proiect_Restaurant.Migrations
                     b.Navigation("Client");
                 });
 
-            modelBuilder.Entity("Cercel_Roxana_Madalina_Proiect_Restaurant.Models.Angajat", b =>
-                {
-                    b.Navigation("Comenzi");
-                });
-
             modelBuilder.Entity("Cercel_Roxana_Madalina_Proiect_Restaurant.Models.Client", b =>
                 {
-                    b.Navigation("Comenzi");
-
                     b.Navigation("Rezervarile");
                 });
 
             modelBuilder.Entity("Cercel_Roxana_Madalina_Proiect_Restaurant.Models.Meniu", b =>
                 {
-                    b.Navigation("Comenzi");
-
                     b.Navigation("MeniuProduse");
                 });
 

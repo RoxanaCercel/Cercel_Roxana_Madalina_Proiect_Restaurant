@@ -24,5 +24,7 @@ namespace Cercel_Roxana_Madalina_Proiect_Restaurant.Data
 
         public DbSet<Cercel_Roxana_Madalina_Proiect_Restaurant.Models.Rezervare> Rezervare { get; set; }
 
+        public DbSet<Cercel_Roxana_Madalina_Proiect_Restaurant.Models.Comanda> Comanda { get; set; }
+
     }
 }

@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Cercel_Roxana_Madalina_Proiect_Restaurant.Data;
 using Cercel_Roxana_Madalina_Proiect_Restaurant.Models;
 
-namespace Cercel_Roxana_Madalina_Proiect_Restaurant.Pages.Rezervari
+namespace Cercel_Roxana_Madalina_Proiect_Restaurant.Pages.Comenzi
 {
     public class EditModel : PageModel
     {
@@ -21,7 +21,7 @@ namespace Cercel_Roxana_Madalina_Proiect_Restaurant.Pages.Rezervari
         }
 
         [BindProperty]
-        public Rezervare Rezervare { get; set; }
+        public Comanda Comanda { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -30,13 +30,15 @@ namespace Cercel_Roxana_Madalina_Proiect_Restaurant.Pages.Rezervari
                 return NotFound();
             }
 
-            Rezervare = await _context.Rezervare.FirstOrDefaultAsync(m => m.RezervareID == id);
+            Comanda = await _context.Comanda.FirstOrDefaultAsync(m => m.ComandaID == id);
 
-            if (Rezervare == null)
+            if (Comanda == null)
             {
                 return NotFound();
             }
-            ViewData["ClientID"] = new SelectList(_context.Set<Client>(), "ClientId", "Nume", "ClientId", "Prenume");
+            ViewData["ClientiID"] = new SelectList(_context.Set<Client>(), "ClientId", "Nume", "ClientId", "Prenume");
+            ViewData["MeniuID"] = new SelectList(_context.Set<Meniu>(), "MeniuID", "Denumire");
+            ViewData["AngajatID"] = new SelectList(_context.Set<Angajat>(), "AngajatId", "Nume", "AngajatId", "Prenume");
             return Page();
         }
 
@@ -49,7 +51,7 @@ namespace Cercel_Roxana_Madalina_Proiect_Restaurant.Pages.Rezervari
                 return Page();
             }
 
-            _context.Attach(Rezervare).State = EntityState.Modified;
+            _context.Attach(Comanda).State = EntityState.Modified;
 
             try
             {
@@ -57,7 +59,7 @@ namespace Cercel_Roxana_Madalina_Proiect_Restaurant.Pages.Rezervari
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!RezervareExists(Rezervare.RezervareID))
+                if (!ComandaExists(Comanda.ComandaID))
                 {
                     return NotFound();
                 }
@@ -70,9 +72,9 @@ namespace Cercel_Roxana_Madalina_Proiect_Restaurant.Pages.Rezervari
             return RedirectToPage("./Index");
         }
 
-        private bool RezervareExists(int id)
+        private bool ComandaExists(int id)
         {
-            return _context.Rezervare.Any(e => e.RezervareID == id);
+            return _context.Comanda.Any(e => e.ComandaID == id);
         }
     }
 }

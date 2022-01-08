@@ -18,5 +18,6 @@ namespace Cercel_Roxana_Madalina_Proiect_Restaurant.Models
         public string Gramaj { get; set; }
         public int Pret { get; set; }
         public ICollection<MeniuProdus> MeniuProduse { get; set; }
+        public ICollection<Comanda> Comenzi { get; set; }
     }
 }

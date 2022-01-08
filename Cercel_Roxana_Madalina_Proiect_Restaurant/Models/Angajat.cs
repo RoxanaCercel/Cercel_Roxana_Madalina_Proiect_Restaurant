@@ -20,5 +20,6 @@ namespace Cercel_Roxana_Madalina_Proiect_Restaurant.Models
         public int Salariu { get; set; }
         [Display(Name = "Ore suplimentare")]
         public int OreSupl { get; set; }
+        public ICollection<Comanda> Comenzi { get; set; }
     }
 }

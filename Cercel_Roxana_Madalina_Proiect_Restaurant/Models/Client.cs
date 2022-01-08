@@ -17,5 +17,6 @@ namespace Cercel_Roxana_Madalina_Proiect_Restaurant.Models
         public string Prenume { get; set; }
         public int Varsta { get; set; }
         public ICollection<Rezervare> Rezervarile { get; set; }
+        public ICollection<Comanda> Comenzi { get; set; }
     }
 }
